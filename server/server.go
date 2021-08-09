@@ -316,6 +316,7 @@ func (s *Server) IsRunning() bool {
 type APIResponse struct {
 	State         string        `json:"state"`
 	IsSuspended   bool          `json:"is_suspended"`
+	IsRunning     bool          `json:"is_running"`
 	Utilization   ResourceUsage `json:"utilization"`
 	Configuration Configuration `json:"configuration"`
 }
@@ -326,6 +327,7 @@ func (s *Server) ToAPIResponse() APIResponse {
 	return APIResponse{
 		State:         s.Environment.State(),
 		IsSuspended:   s.IsSuspended(),
+		IsRunning:     s.IsRunning(),
 		Utilization:   s.Proc(),
 		Configuration: *s.Config(),
 	}
